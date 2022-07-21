@@ -35,6 +35,8 @@ public class Booking {
 
     private float duration;
 
+    private String location;
+
     private String note;
 
     private BookingState state;
