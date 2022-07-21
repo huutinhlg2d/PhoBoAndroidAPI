@@ -4,7 +4,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.*;
 
@@ -18,10 +18,10 @@ public class Photographer extends User {
     float rate;
 
     @OneToMany(mappedBy = "photographer")
-    @JsonIgnore
+    @JsonManagedReference
     Set<Booking> bookings;
 
     @OneToMany(mappedBy = "photographer", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @JsonManagedReference
     Set<PhotographerConcept> photographerConcepts;
 }
