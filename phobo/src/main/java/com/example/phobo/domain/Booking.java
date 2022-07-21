@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.*;
 
 @Entity
@@ -19,14 +21,17 @@ public class Booking {
 
     @ManyToOne
     @JoinColumn(name="customer_id", nullable = false, insertable = true)
+    @JsonBackReference
     private Customer customer;
 
     @ManyToOne
     @JoinColumn(name="photographer_id", nullable = false, insertable = true) 
+    @JsonBackReference
     private Photographer photographer;
 
     @ManyToOne
     @JoinColumn(name="concept_id", nullable = false, insertable = true)
+    @JsonBackReference
     private Concept concept;
 
     private LocalDate bookingDate;

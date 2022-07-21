@@ -4,6 +4,9 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.*;
 
 @Entity
@@ -12,5 +15,6 @@ import lombok.*;
 @ToString
 public class Customer extends User {
     @OneToMany(mappedBy = "customer")
+    @JsonManagedReference
     Set<Booking> bookings;
 }
