@@ -7,5 +7,5 @@ import com.example.phobo.domain.User;
 
 @Repository
 public interface IUserRepository extends JpaRepository<User, Integer> {
-
+    public User findByEmailAndPassword(String email, String password);
 }

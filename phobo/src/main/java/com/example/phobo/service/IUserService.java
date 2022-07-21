@@ -6,5 +6,6 @@ import com.example.phobo.domain.User;
 
 @Service
 public interface IUserService extends IService<User, Integer> {
+    
 
 }
