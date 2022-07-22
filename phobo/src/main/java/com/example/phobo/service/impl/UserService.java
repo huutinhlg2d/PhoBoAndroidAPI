@@ -36,8 +36,12 @@ public class UserService implements IUserService{
         userRepository.deleteById(key);
     }
 
-    public User login(int uid, String password) {
+    public User loginByFirebaseUid(int uid, String password) {
         return userRepository.findByFirebaseUidAndPassword(uid, password);
+    }
+
+    public User loginByEmail(String email, String password) {
+        return userRepository.findByEmailAndPassword(email, password);
     }
 
     public User getUserByEmail(String email) {
