@@ -4,6 +4,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.*;
 
 @Entity
@@ -16,8 +18,10 @@ public class Photographer extends User {
     float rate;
 
     @OneToMany(mappedBy = "photographer")
+    @JsonIgnore
     Set<Booking> bookings;
 
     @OneToMany(mappedBy = "photographer", cascade = CascadeType.ALL)
+    @JsonIgnore
     Set<PhotographerConcept> photographerConcepts;
 }

@@ -1,10 +1,13 @@
 package com.example.phobo.domain;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import javax.persistence.*;
 
 import org.hibernate.annotations.Nationalized;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.*;
 
@@ -37,4 +40,5 @@ public class User {
     private UserRole role;
 
     private boolean isDeleted;
+
 }
