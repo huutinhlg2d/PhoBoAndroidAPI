@@ -33,10 +33,10 @@ public class PhotographerController {
     }
 
     @GetMapping("/concept/{id}")
-    public ResponseEntity<List<PhotographerConcept>> getPhotographerConcepts(@PathVariable Integer id) {
+    public ResponseEntity<List<PhotographerConcept>> getPhotographerConcepts(@PathVariable Integer id) throws Exception{
 
-        List<PhotographerConcept> photographers = photographerService.getPhotographerConcepts(id);
+        List<PhotographerConcept> PhotographerConcept = photographerService.getPhotographerConcepts(id);
 
-        return ResponseEntity.ok(photographers);
+        return ResponseEntity.ok(PhotographerConcept);
     }
 }

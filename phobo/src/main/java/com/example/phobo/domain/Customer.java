@@ -15,6 +15,6 @@ import lombok.*;
 public class Customer extends User {
     
     @OneToMany(mappedBy = "customer")
-    @JsonManagedReference
+    @JsonManagedReference(value = "customer")
     Set<Booking> bookings;
 }

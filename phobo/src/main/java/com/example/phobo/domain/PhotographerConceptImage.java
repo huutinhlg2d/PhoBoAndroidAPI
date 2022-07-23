@@ -2,6 +2,8 @@ package com.example.phobo.domain;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.*;
 
 @Entity
@@ -17,6 +19,7 @@ public class PhotographerConceptImage {
 
     @ManyToOne
     @JoinColumn(name="photographer_concept_id", nullable = false, insertable = true, updatable = true) 
+    @JsonBackReference(value = "photographer-concept")
     private PhotographerConcept photographerConcept;
 
     private String imageUrl;

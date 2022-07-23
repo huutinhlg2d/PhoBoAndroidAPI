@@ -22,17 +22,17 @@ public class PhotographerConcept {
 
     @ManyToOne
     @JoinColumn(name="photographer_id", nullable = false, insertable = true) 
-    @JsonBackReference
+    @JsonBackReference(value = "photographer")
     private Photographer photographer;
 
     @ManyToOne
     @JoinColumn(name="concept_id", nullable = false, insertable = true)
-    @JsonManagedReference
+    // @JsonBackReference(value = "concept")
     private Concept concept;
 
     private String durationConfig;
 
     @OneToMany(mappedBy = "photographerConcept", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value = "photographer-concept")
     private Set<PhotographerConceptImage> photographerConceptImages;
 }

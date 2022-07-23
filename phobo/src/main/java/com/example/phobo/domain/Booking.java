@@ -22,22 +22,22 @@ public class Booking {
 
     @ManyToOne
     @JoinColumn(name="customer_id", nullable = false, insertable = true)
-    @JsonBackReference
+    @JsonBackReference(value = "customer")
     private Customer customer;
 
     @ManyToOne
     @JoinColumn(name="photographer_id", nullable = false, insertable = true) 
-    @JsonBackReference
+    @JsonBackReference(value = "photographer")
     private Photographer photographer;
 
     @ManyToOne
     @JoinColumn(name="concept_id", nullable = false, insertable = true)
-    @JsonBackReference
+    @JsonBackReference(value = "concept")
     private Concept concept;
 
     private Date bookingDate;
 
-    private float bookingRate;
+    private float bookingRate = 0;
 
     private float duration;
 
@@ -45,5 +45,5 @@ public class Booking {
 
     private String note;
 
-    private BookingState state;
+    private BookingState state = BookingState.WAITING;
 }

@@ -1,10 +1,15 @@
 package com.example.phobo.controller;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +29,18 @@ public class BookingController {
     public ResponseEntity<List<Booking>> getAll() {
         List<Booking> list= bookingService.getAll();
         return ResponseEntity.ok(list);
+    }
+
+    @PostMapping
+    public ResponseEntity<Booking> addBooking(@RequestBody Booking booking){
+        Booking save = null;
+        try {
+            
+            save = bookingService.save(booking);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+       return ResponseEntity.ok(save);
     }
 
     // @GetMapping("/customer")

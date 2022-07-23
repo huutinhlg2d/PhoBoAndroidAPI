@@ -18,10 +18,10 @@ public class Photographer extends User {
     float rate;
 
     @OneToMany(mappedBy = "photographer")
-    @JsonManagedReference
+    @JsonManagedReference(value = "photographer")
     Set<Booking> bookings;
 
     @OneToMany(mappedBy = "photographer", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference("photographer")
     Set<PhotographerConcept> photographerConcepts;
 }

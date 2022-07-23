@@ -29,8 +29,7 @@ public class BookingService implements IBookingService{
 
     @Override
     public Booking save(Booking entity) {
-        // TODO Auto-generated method stub
-        return null;
+        return bookingRepository.save(entity);
     }
 
     @Override
