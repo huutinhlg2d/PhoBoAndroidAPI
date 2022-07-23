@@ -3,13 +3,19 @@ package com.example.phobo.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.phobo.domain.Customer;
+import com.example.phobo.repository.ICustomerRepository;
 import com.example.phobo.service.ICustomerService;
 
 @Service
 public class CustomerService implements ICustomerService{
+
+    @Autowired
+    ICustomerRepository customerRepository;
+    
 
     @Override
     public List<Customer> getAll() {
@@ -25,8 +31,7 @@ public class CustomerService implements ICustomerService{
 
     @Override
     public Customer save(Customer entity) {
-        // TODO Auto-generated method stub
-        return null;
+        return customerRepository.save(entity);
     }
 
     @Override

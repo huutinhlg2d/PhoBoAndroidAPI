@@ -33,16 +33,14 @@ public class BookingController {
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("/customer")
-    public ResponseEntity<List<Booking>> getBookingByCustomerId(@RequestBody Customer customer) {
-        int id = customer.getId();
+    @GetMapping("/customer/{id}")
+    public ResponseEntity<List<Booking>> getBookingByCustomerId(@PathVariable int id) {;
         List<Booking> bookingByCustomer=bookingService.getBookingByCustomerId(id);
         return ResponseEntity.ok(bookingByCustomer);
     }
 
-    @GetMapping("/photographer")
-    public ResponseEntity<List<Booking>> getBookingByPhotographerId(@RequestBody Photographer photographer) {
-        int id = photographer.getId();
+    @GetMapping("/photographer/{id}")
+    public ResponseEntity<List<Booking>> getBookingByPhotographerId(@PathVariable int id) {
         List<Booking> bookingByPhotographer=bookingService.getBookingByPhotographerId(id);
         return ResponseEntity.ok(bookingByPhotographer);
     }
@@ -56,6 +54,7 @@ public class BookingController {
 
     @PutMapping("/cancel/{id}")
     public ResponseEntity<Booking> cancelBookingRequest(@PathVariable int id) {
+        System.out.println(id);
         Booking booking = bookingService.cancelBooking(id);
         return ResponseEntity.ok(booking);
     }
