@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.phobo.domain.User;
+import com.example.phobo.domain.UserRole;
 import com.example.phobo.repository.IUserRepository;
 import com.example.phobo.service.IUserService;
 
@@ -46,6 +47,11 @@ public class UserService implements IUserService{
 
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public List<User> getAllByRole(UserRole role) {
+        return userRepository.findAllByRole(role);
     }
 
 }
