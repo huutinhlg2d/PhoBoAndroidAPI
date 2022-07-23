@@ -22,12 +22,12 @@ public class PhotographerConcept {
 
     @ManyToOne
     @JoinColumn(name="photographer_id", nullable = false, insertable = true) 
-    @JsonBackReference
+    @JsonBackReference(value = "photographer")
     private Photographer photographer;
 
     @ManyToOne
     @JoinColumn(name="concept_id", nullable = false, insertable = true)
-    @JsonBackReference
+    // @JsonBackReference
     private Concept concept;
 
     private String durationConfig;

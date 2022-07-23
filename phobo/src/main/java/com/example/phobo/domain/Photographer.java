@@ -23,6 +23,6 @@ public class Photographer extends User {
     Set<Booking> bookings;
 
     @OneToMany(mappedBy = "photographer", cascade = CascadeType.ALL)
-    @JsonBackReference(value = "photographer")
+    @JsonManagedReference(value = "photographer")
     Set<PhotographerConcept> photographerConcepts;
 }
