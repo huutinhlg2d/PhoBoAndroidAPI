@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.Nationalized;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.*;
@@ -35,6 +36,7 @@ public class User {
 
     private String avatarUrl;
 
+    // @JsonFormat(pattern = "MMM d, yyyy")
     private LocalDate dateOfBirth;
 
     private UserRole role;
