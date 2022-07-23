@@ -1,6 +1,7 @@
 package com.example.phobo.domain;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -34,7 +35,7 @@ public class Booking {
     @JsonBackReference
     private Concept concept;
 
-    private LocalDate bookingDate;
+    private Date bookingDate;
 
     private float bookingRate;
 

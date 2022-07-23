@@ -27,7 +27,7 @@ public class PhotographerConcept {
 
     @ManyToOne
     @JoinColumn(name="concept_id", nullable = false, insertable = true)
-    @JsonBackReference
+    @JsonManagedReference
     private Concept concept;
 
     private String durationConfig;

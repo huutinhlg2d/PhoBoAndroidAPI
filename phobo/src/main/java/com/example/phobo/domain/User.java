@@ -1,5 +1,6 @@
 package com.example.phobo.domain;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -35,7 +36,7 @@ public class User {
 
     private String avatarUrl;
 
-    private LocalDate dateOfBirth;
+    private Date dateOfBirth;
 
     private UserRole role;
 
