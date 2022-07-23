@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException.BadRequest;
 
 import com.example.phobo.domain.User;
+import com.example.phobo.domain.UserRole;
 import com.example.phobo.service.IUserService;
 import com.example.phobo.service.impl.UserService;
 
@@ -54,9 +55,13 @@ public class UserController {
     @PostMapping("/register") 
     public ResponseEntity<String> register(@RequestBody User user) throws Exception {
         String regEmail=user.getEmail();
+        UserRole userRole=user.getRole();
         if (userService.getUserByEmail(regEmail) != null ) throw new Exception ("Register Fail");
         else {
             user.setAvatarUrl("https://image.vtc.vn/upload/2021/07/07/38d6ee6d5b455a6b815e0920c6bfb0b4-06260856.jpg");
+            if (userRole.equals(UserRole.PHOTOGRAPHER)) {
+                user.setRole(UserRole.PENDINGPHOTOGRAPHER);
+            }
             userService.save(user);
             return ResponseEntity.ok("success");
         }
