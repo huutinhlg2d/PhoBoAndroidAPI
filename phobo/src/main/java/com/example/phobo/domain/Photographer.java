@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.*;
@@ -18,10 +19,10 @@ public class Photographer extends User {
     float rate;
 
     @OneToMany(mappedBy = "photographer")
-    @JsonManagedReference
+    @JsonBackReference(value = "photographer")
     Set<Booking> bookings;
 
     @OneToMany(mappedBy = "photographer", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonBackReference(value = "photographer")
     Set<PhotographerConcept> photographerConcepts;
 }

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.*;
 
@@ -21,17 +22,17 @@ public class Booking {
 
     @ManyToOne
     @JoinColumn(name="customer_id", nullable = false, insertable = true)
-    @JsonBackReference
+    @JsonManagedReference(value = "customer")
     private Customer customer;
 
     @ManyToOne
     @JoinColumn(name="photographer_id", nullable = false, insertable = true) 
-    @JsonBackReference
+    @JsonManagedReference(value = "photographer")
     private Photographer photographer;
 
     @ManyToOne
     @JoinColumn(name="concept_id", nullable = false, insertable = true)
-    @JsonBackReference
+    @JsonManagedReference(value = "concept")
     private Concept concept;
 
     private LocalDate bookingDate;
