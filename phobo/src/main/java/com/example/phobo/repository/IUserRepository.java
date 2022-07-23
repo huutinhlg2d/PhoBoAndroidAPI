@@ -8,5 +8,6 @@ import com.example.phobo.domain.User;
 @Repository
 public interface IUserRepository extends JpaRepository<User, Integer> {
     public User findByFirebaseUidAndPassword(int firebaseUid, String password);
+    public User findByEmailAndPassword(String email, String password);
     public User findByEmail(String email);
 }
