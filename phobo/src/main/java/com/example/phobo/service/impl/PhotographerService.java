@@ -37,8 +37,7 @@ public class PhotographerService implements IPhotographerService{
 
     @Override
     public Photographer save(Photographer entity) {
-        // TODO Auto-generated method stub
-        return null;
+        return photographerRepository.save(entity);
     }
 
     @Override
