@@ -59,21 +59,20 @@ public class UserController {
     public ResponseEntity<String> register(@RequestBody User user) throws Exception {
         String regEmail=user.getEmail();
         UserRole userRole=user.getRole();
-        Customer customer = new Customer();
 
-        if (userService.getUserByEmail(regEmail) != null ) throw new Exception ("Register Fail");
+        if (userService.getUserByEmail(regEmail) != null ) throw new Exception ("Email existed");
         else {
             user.setAvatarUrl("https://image.vtc.vn/upload/2021/07/07/38d6ee6d5b455a6b815e0920c6bfb0b4-06260856.jpg");
             if (userRole.equals(UserRole.PHOTOGRAPHER)) {
                 user.setRole(UserRole.PENDINGPHOTOGRAPHER);
-                Photographer photographer= new Photographer();
-                photographer.setId(user.getId());
+                Photographer photographer= new Photographer(user);
                 photographer.setRate(0f);
                 photographerService.save(photographer);
+            } else {
+                Customer customer = new Customer(user);
+                customerService.save(customer);
             }   
-            customer.setId(user.getId());
-            customerService.save(customer);
-            userService.save(user);
+
             return ResponseEntity.ok("success");
         }
     }

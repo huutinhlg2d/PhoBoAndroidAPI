@@ -1,5 +1,8 @@
 package com.example.phobo.controller;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +48,21 @@ public class BookingController {
         List<Booking> bookingByPhotographer=bookingService.getBookingByPhotographerId(id);
         return ResponseEntity.ok(bookingByPhotographer);
     }
+    @PostMapping
+    public ResponseEntity<Booking> addBooking(@RequestBody Booking booking){
+        Booking save = null;
+        try {
+            
+            save = bookingService.save(booking);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+       return ResponseEntity.ok(save);
+    }
+
+    // @GetMapping("/customer")
+    // public ResponseEntity<List<Booking>> getBookingByUserId(String email) {
+    //     List<Booking> bookingByUser=bookingService.get
 
     // @GetMapping("/customer/{id}")
     // public ResponseEntity<List<Booking>> getBookingByUserId(@PathVariable ("id") @RequestBody Customer customer) {

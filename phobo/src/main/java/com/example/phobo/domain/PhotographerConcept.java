@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.*;
@@ -22,17 +23,16 @@ public class PhotographerConcept {
 
     @ManyToOne
     @JoinColumn(name="photographer_id", nullable = false, insertable = true) 
-    @JsonBackReference(value = "photographer")
+    @JsonBackReference(value = "photographer-photographer-concept")
     private Photographer photographer;
 
     @ManyToOne
     @JoinColumn(name="concept_id", nullable = false, insertable = true)
-    // @JsonBackReference
     private Concept concept;
 
     private String durationConfig;
 
     @OneToMany(mappedBy = "photographerConcept", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonIgnore
     private Set<PhotographerConceptImage> photographerConceptImages;
 }

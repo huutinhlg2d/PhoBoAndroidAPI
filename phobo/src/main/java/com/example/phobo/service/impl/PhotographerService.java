@@ -2,11 +2,13 @@ package com.example.phobo.service.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.phobo.domain.Photographer;
+import com.example.phobo.domain.PhotographerConcept;
 import com.example.phobo.repository.IPhotographerConceptImageRepository;
 import com.example.phobo.repository.IPhotographerConceptRepository;
 import com.example.phobo.repository.IPhotographerRepository;
@@ -44,6 +46,11 @@ public class PhotographerService implements IPhotographerService{
     public void deleteById(Integer key) {
         // TODO Auto-generated method stub
         
+    }
+
+    @Override
+    public List<PhotographerConcept> getPhotographerConcepts(int id) {
+        return photographerConceptRepository.findByPhotographerId(id);
     }
 
 }

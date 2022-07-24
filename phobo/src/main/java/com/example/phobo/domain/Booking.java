@@ -1,10 +1,10 @@
 package com.example.phobo.domain;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.*;
@@ -22,22 +22,19 @@ public class Booking {
 
     @ManyToOne
     @JoinColumn(name="customer_id", nullable = false, insertable = true)
-    @JsonManagedReference(value = "customer")
     private Customer customer;
 
     @ManyToOne
     @JoinColumn(name="photographer_id", nullable = false, insertable = true) 
-    @JsonManagedReference(value = "photographer")
     private Photographer photographer;
 
     @ManyToOne
     @JoinColumn(name="concept_id", nullable = false, insertable = true)
-    @JsonManagedReference(value = "concept")
     private Concept concept;
 
-    private LocalDate bookingDate;
+    private Date bookingDate;
 
-    private float bookingRate;
+    private float bookingRate = 0;
 
     private float duration;
 
@@ -45,5 +42,5 @@ public class Booking {
 
     private String note;
 
-    private BookingState state;
+    private BookingState state = BookingState.WAITING;
 }

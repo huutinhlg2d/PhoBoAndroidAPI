@@ -1,5 +1,6 @@
 package com.example.phobo.domain;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.persistence.*;
@@ -19,23 +20,33 @@ import lombok.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    protected int id;
 
-    private int firebaseUid;
+    protected int firebaseUid;
 
     @Nationalized
-    private String name;
+    protected String name;
 
-    private String email;
+    protected String email;
 
-    private String password;
+    protected String password;
 
-    private String avatarUrl;
+    protected String avatarUrl;
 
-    private LocalDate dateOfBirth;
+    protected Date dateOfBirth;
 
-    private UserRole role;
+    protected UserRole role;
 
-    private boolean isDeleted;
+    protected boolean isDeleted;
 
+    public User(String name, String email, String password, String avatarUrl, Date dateOfBirth, UserRole role) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.avatarUrl = avatarUrl;
+        this.dateOfBirth = dateOfBirth;
+        this.role = role;
+    }
+
+    
 }
